@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    // "experimentalDecorators": true,                        /* USADO PARA OS DECORATORS (@) USADOS PELOS ORMs */
+    // "emitDecoratorMetadata": true,                         /* USADO PARA OS DECORATORS (@) USADOS PELOS ORMs */
+    "module": "commonjs",
+    "rootDirs": [
+      "./src",
+    ],
+    "outDir": "./build",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "./src"
+  ],
+}
