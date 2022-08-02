@@ -1,13 +1,14 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
-import 'dotenv/config';
+import { PORT } from './utils';
+import { AuthRouter, UserRouter } from './routers';
 
 export class Server {
   readonly #express: express.Application;
   readonly port: Number
 
   constructor() {
-    this.port = Number(process.env.PORT);
+    this.port = PORT;
     this.#express = express();
   }
 
@@ -18,19 +19,13 @@ export class Server {
   }
 
   private routers() {
-    this.#express.get('/', (request: Request, response: Response) => {
-      return response.json({
-        sucecss: true,
-        statusCode: 200,
-        data: `App running`
-      })
-    })
+    this.#express.use(new AuthRouter().init());
+    this.#express.use(new UserRouter().init());
   }
 
   private start() {
     this.#express.listen(this.port, () => {
       console.log(`App running on port ${this.port}`);
-
     });
   }
 
